@@ -11,18 +11,19 @@
             --primary-color: #D32F2F; /* Rosso principale */
             --secondary-color: #FFA000; /* Arancione/Giallo */
             --text-dark: #333333;
-            --text-light: #f4f4f4;
-            --bg-color: #FFF8F0; /* Un bianco panna/avorio molto leggero */
+            --text-light: #ffffff;
+            --bg-light: #FFF8F0; /* Sfondo principale chiaro */
+            --bg-darker: #F7F0E8; /* Sfondo alternato per sezioni */
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-color);
+            background-color: var(--bg-light);
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden; /* Previene lo scroll orizzontale */
+            overflow-x: hidden;
         }
 
         .container {
@@ -32,43 +33,58 @@
         }
 
         header {
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+        }
+        
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
         .logo {
             font-size: 1.8em;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--text-light);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
         
-        /* NUOVO: Stile per la Hero Section a due colonne */
+        /* MODIFICATO: Hero Section con immagine di sfondo */
+        .hero-background {
+            position: relative;
+            color: var(--text-light);
+            background: url('https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            min-height: 95vh;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+        }
+
         .hero {
+            position: relative;
             display: flex;
             align-items: center;
-            padding: 60px 20px;
             gap: 40px;
-            min-height: 80vh;
+            min-height: 95vh;
         }
 
-        .hero-text {
-            flex: 1;
-            animation: slideInFromLeft 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 3.2em;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            color: #666;
-        }
+        .hero-text { flex: 1; animation: slideInFromLeft 1s ease-out; }
+        .hero h1 { font-size: 3.5em; margin-bottom: 20px; line-height: 1.2; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2em; margin-bottom: 30px; }
+        .hero-image { flex: 1; text-align: center; animation: slideInFromRight 1s ease-out; }
+        .hero-image img { max-width: 100%; height: auto; }
 
         .cta-button {
             display: inline-block;
@@ -80,198 +96,105 @@
             font-weight: 600;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        .section { padding: 80px 20px; opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .section.visible { opacity: 1; transform: translateY(0); }
+        .section-title { text-align: center; font-size: 2.5em; margin-bottom: 60px; }
+        .alternate-bg { background-color: var(--bg-darker); }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .feature-card { background-color: white; padding: 40px 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .feature-card h3 { margin-top: 15px; font-size: 1.4em; color: var(--primary-color); }
+
+        .how-it-works-steps { display: flex; justify-content: space-between; gap: 40px; text-align: center; }
+        .step { flex: 1; }
+        .step-number { width: 60px; height: 60px; line-height: 60px; border-radius: 50%; background-color: var(--primary-color); color: white; font-size: 1.8em; font-weight: 700; margin: 0 auto 20px auto; }
+        .step h3 { font-size: 1.5em; margin-bottom: 10px; }
+
+        /* NUOVO: Sezione Testimonianze */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .testimonial-card { background-color: var(--bg-light); border: 1px solid #e0e0e0; padding: 30px; border-radius: 12px; }
+        .testimonial-text { font-style: italic; margin-bottom: 20px; }
+        .testimonial-author { font-weight: 700; color: var(--primary-color); }
+        .testimonial-author span { font-weight: 400; color: #777; }
         
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
+        footer { text-align: center; padding: 40px 20px; background-color: #333; color: #aaa; }
+        footer a { color: var(--text-light); text-decoration: none; }
 
-        .hero-image {
-            flex: 1;
-            text-align: center;
-            animation: slideInFromRight 1s ease-out;
-        }
+        @keyframes slideInFromLeft { 0% { transform: translateX(-50px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+        @keyframes slideInFromRight { 0% { transform: translateX(50px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
 
-        /* Stile per il mockup del telefono */
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .section {
-            padding: 80px 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 60px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background-color: white;
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .feature-card h3 {
-            margin-top: 15px;
-            font-size: 1.4em;
-            color: var(--primary-color);
-        }
-
-        /* NUOVO: Sezione "How it Works" */
-        .how-it-works-steps {
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-            text-align: center;
-        }
-        
-        .step {
-            flex: 1;
-        }
-        
-        .step-number {
-            width: 60px;
-            height: 60px;
-            line-height: 60px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: white;
-            font-size: 1.8em;
-            font-weight: 700;
-            margin: 0 auto 20px auto;
-        }
-        
-        .step h3 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-            background-color: #e8e0d5;
-        }
-        
-        footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        /* NUOVO: Animazioni */
-        @keyframes slideInFromLeft {
-            0% { transform: translateX(-100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes slideInFromRight {
-            0% { transform: translateX(100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Media Query per schermi più piccoli */
         @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                min-height: auto;
-            }
+            .hero { flex-direction: column; text-align: center; }
+            .hero-text, .hero-image { animation: none; }
             .hero h1 { font-size: 2.5em; }
             .how-it-works-steps { flex-direction: column; }
         }
-
     </style>
 </head>
 <body>
 
-    <header class="container">
-        <div class="logo">Food-ly</div>
-    </header>
+    <div class="hero-background">
+        <div class="hero-overlay"></div>
+        <header>
+            <div class="header-content">
+                <div class="logo">Food-ly</div>
+            </div>
+        </header>
 
-    <main>
-        <section class="hero container">
-            <div class="hero-text">
-                <h1>La tua pizzeria, a portata di click.</h1>
-                <p>Gestisci ordini, menù e clienti con una piattaforma semplice e potente, creata su misura per le esigenze del tuo ristorante.</p>
-                <a href="#contact" class="cta-button">Contattaci per una Demo</a>
-            </div>
-            <div class="hero-image">
-                <img src="https://i.imgur.com/gGI24g4.png" alt="Screenshot dell'app Food-ly">
-            </div>
-        </section>
+        <main>
+            <section class="hero container">
+                <div class="hero-text">
+                    <h1>La tua pizzeria, a portata di click.</h1>
+                    <p>Gestisci ordini, menù e clienti con una piattaforma semplice e potente, creata su misura per le esigenze del tuo ristorante.</p>
+                    <a href="#contact" class="cta-button">Contattaci per una Demo</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://assets.website-files.com/6244459346648e1342223e38/62557484435a266381993f49_Deliverect-App-screen-p-800.png" alt="Screenshot dell'app Food-ly">
+                </div>
+            </section>
+        </main>
+    </div>
 
-        <section class="section features container">
-            <h2 class="section-title">Funzionalità Principali</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>Gestione Ordini Semplice</h3>
-                    <p>Ricevi e gestisci gli ordini in tempo reale da un'unica, intuitiva dashboard. Riduci gli errori e velocizza il servizio.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Menù Digitale Personalizzabile</h3>
-                    <p>Aggiorna il tuo menù, cambia i prezzi e aggiungi nuovi piatti in pochi secondi, senza bisogno di assistenza tecnica.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Conosci i Tuoi Clienti</h3>
-                    <p>Costruisci una relazione diretta con i tuoi clienti, accedi alla loro cronologia ordini e offri un servizio personalizzato.</p>
-                </div>
-            </div>
-        </section>
+    <section class="section features container">
+        <h2 class="section-title">Funzionalità Principali</h2>
+        <div class="features-grid">
+            <div class="feature-card"><h3>Gestione Ordini Semplice</h3><p>Ricevi e gestisci gli ordini in tempo reale da un'unica, intuitiva dashboard.</p></div>
+            <div class="feature-card"><h3>Menù Digitale Personalizzabile</h3><p>Aggiorna il tuo menù e cambia i prezzi in pochi secondi, senza assistenza tecnica.</p></div>
+            <div class="feature-card"><h3>Conosci i Tuoi Clienti</h3><p>Costruisci una relazione diretta con i tuoi clienti e accedi alla loro cronologia ordini.</p></div>
+        </div>
+    </section>
 
-        <section class="section how-it-works container">
-            <h2 class="section-title">Come Funziona</h2>
-            <div class="how-it-works-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Registrati</h3>
-                    <p>Crea il tuo account e inserisci le informazioni base della tua pizzeria in meno di 5 minuti.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Crea il Tuo Menù</h3>
-                    <p>Aggiungi pizze, bevande e tutti i tuoi prodotti con il nostro editor semplice e intuitivo.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Inizia a Vendere</h3>
-                    <p>Sei pronto! Inizia subito a ricevere e gestire gli ordini dalla tua nuova dashboard.</p>
-                </div>
+    <section class="section how-it-works container alternate-bg">
+        <h2 class="section-title">Come Funziona</h2>
+        <div class="how-it-works-steps">
+            <div class="step"><div class="step-number">1</div><h3>Registrati</h3><p>Crea il tuo account e inserisci le informazioni base della tua pizzeria in meno di 5 minuti.</p></div>
+            <div class="step"><div class="step-number">2</div><h3>Crea il Tuo Menù</h3><p>Aggiungi pizze, bevande e tutti i tuoi prodotti con il nostro editor semplice e intuitivo.</p></div>
+            <div class="step"><div class="step-number">3</div><h3>Inizia a Vendere</h3><p>Sei pronto! Inizia subito a ricevere e gestire gli ordini dalla tua nuova dashboard.</p></div>
+        </div>
+    </section>
+
+    <section class="section testimonials container">
+        <h2 class="section-title">Dicono di noi</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Da quando usiamo Food-ly, abbiamo ridotto gli errori sugli ordini del 90% e i nostri clienti sono molto più felici. Incredibilmente semplice!"</p>
+                <p class="testimonial-author">Marco Rossi, <span>Titolare Pizzeria "Da Gino"</span></p>
             </div>
-        </section>
-        
-        <section id="contact" class="section container" style="text-align: center;">
-            <h2 class="section-title">Interessato?</h2>
-            <p>Contattaci per scoprire come Food-ly può aiutare la tua attività.</p>
-            <p style="font-size: 1.2em; font-weight: 600;">info@food-ly.com</p>
-        </section>
-    </main>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"La gestione del menù online era un incubo. Ora posso aggiungere la 'pizza del giorno' in 30 secondi dal mio telefono. Ha cambiato tutto."</p>
+                <p class="testimonial-author">Giulia Verdi, <span>Titolare "La Tradizione"</span></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section container" style="text-align: center;">
+        <h2 class="section-title">Interessato?</h2>
+        <p>Contattaci per scoprire come Food-ly può aiutare la tua attività.</p>
+        <p style="font-size: 1.2em; font-weight: 600;">info@food-ly.com</p>
+    </section>
 
     <footer>
         <div class="container">
@@ -283,15 +206,10 @@
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); }
             });
         }, { threshold: 0.1 });
-
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
+        document.querySelectorAll('.section').forEach(section => { observer.observe(section); });
     </script>
 </body>
 </html>
