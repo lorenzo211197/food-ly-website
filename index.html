@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food-ly - La tua pizzeria a portata di click</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        :root {
+            --primary-color: #D32F2F;
+            /* Rosso principale */
+            --secondary-color: #FFA000;
+            /* Arancione/Giallo */
+            --text-dark: #333333;
+            --text-light: #f4f4f4;
+            --bg-color: #FFF8F0;
+            /* Un bianco panna/avorio molto leggero */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: #666;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 60px 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            width: 30%;
+            min-width: 280px;
+        }
+
+        .feature-card h3 {
+            margin-top: 15px;
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="container">
+        <div class="logo">Food-ly</div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>La tua pizzeria, a portata di click.</h1>
+            <p>Gestisci ordini, menù e clienti con una piattaforma semplice e potente, creata su misura per le esigenze
+                del tuo ristorante.</p>
+            <a href="#contact" class="cta-button">Contattaci per una Demo</a>
+        </section>
+
+        <section class="features container">
+            <div class="feature-card">
+                <h3>Gestione Ordini Semplice</h3>
+                <p>Ricevi e gestisci gli ordini in tempo reale da un'unica, intuitiva dashboard. Riduci gli errori e
+                    velocizza il servizio.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Menù Digitale Personalizzabile</h3>
+                <p>Aggiorna il tuo menù, cambia i prezzi e aggiungi nuovi piatti in pochi secondi, senza bisogno di
+                    assistenza tecnica.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Conosci i Tuoi Clienti</h3>
+                <p>Costruisci una relazione diretta con i tuoi clienti, accedi alla loro cronologia ordini e offri un
+                    servizio personalizzato.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="container" style="text-align: center; padding: 60px 20px;">
+            <h2>Interessato?</h2>
+            <p>Contattaci per scoprire come Food-ly può aiutare la tua attività.</p>
+            <p style="font-size: 1.2em; font-weight: 600;">info@food-ly.com</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Food-ly. Tutti i diritti riservati.</p>
+        <p><a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+</body>
+
+</html>
