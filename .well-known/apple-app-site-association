@@ -1,16 +1,15 @@
 {
-  "applinks": {
-    "apps": [],
-    "details": [
-      {
-        "appID": "PV23W7V52G.com.example.pizzeriaAppPulita",
-        "paths": [
-          "/confirm-registration",
-          "/reset-password",
-          "/order-details",
-          "*"
-        ]
-      }
-    ]
-  }
+    "applinks": {
+        "details": [
+            {
+                "appID": "PV23W7V52G.IL-TUO-VERO-BUNDLE-ID-DA-XCODE",
+                "paths": [
+                    "/reset-password/*",
+                    "/confirm-registration/*",
+                    "/order-details/*"
+                ]
+            }
+        ],
+        "apps": []
+    }
 }
