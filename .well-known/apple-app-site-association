@@ -2,7 +2,7 @@
     "applinks": {
         "details": [
             {
-                "appID": "PV23W7V52G.IL-TUO-VERO-BUNDLE-ID-DA-XCODE",
+                "appID": "PV23W7V52G.com.example.pizzeriaAppPulita",
                 "paths": [
                     "/reset-password/*",
                     "/confirm-registration/*",
